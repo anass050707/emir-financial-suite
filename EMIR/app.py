@@ -10,40 +10,7 @@ from modules.narrator import generer_rapport
 from modules.expoter import create_pdf
 from modules.assistant import ask_financial_brain
 
-# ... (tes imports) ...
 
-# Initialisation de l'état de session
-if 'logged_in' not in st.session_state:
-    st.session_state['logged_in'] = False
-
-# --- ECRAN DE CONNEXION ---
-if not st.session_state['logged_in']:
-    st.title("🦅 EMIR Financial Suite")
-    st.markdown("> Système d'Audit & Intelligence Financière")
-    
-    # 👇 AJOUTE CE BLOC ICI 👇
-    st.info("""
-    💡 *Accès Démonstration* :
-    * *Identifiant* : admin
-    * *Mot de passe* : emir2025
-    """)
-    # 👆 FIN DU BLOC 👆
-
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        username = st.text_input("Identifiant")
-        password = st.text_input("Mot de passe", type="password")
-        
-        if st.button("🔒 Se connecter"):
-            if username == "admin" and password == "emir2025":
-                st.session_state['logged_in'] = True
-                st.rerun()
-            else:
-                st.error("Accès refusé. Violation de sécurité.")
-    
-    st.stop() # Arrête le code ici si pas connecté
-
-# ... (le reste de ton code) ...
 
 # --- CONFIGURATION DE LA PAGE ---
 st.set_page_config(
@@ -106,7 +73,17 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+st.markdown("> Système d'Audit & Intelligence Financière")
+    
+    # --- AJOUT DIRECT SUR GITHUB ---
+    st.info("""
+    💡 *Accès Démonstration* :
+    * *Identifiant* : admin
+    * *Mot de passe* : emir2025
+    """)
+    # -------------------------------
 
+    col1, col2, col3 = st.columns([1, 2, 1])
 # --- GESTION DE LA CONNEXION (LOGIN) ---
 if 'authenticated' not in st.session_state:
     st.session_state['authenticated'] = False
@@ -296,3 +273,4 @@ else:
                     type="primary"
 
                 )
+
