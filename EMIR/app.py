@@ -76,12 +76,7 @@ st.markdown("""
 st.markdown("> Système d'Audit & Intelligence Financière")
     
     # --- AJOUT DIRECT SUR GITHUB ---
-    st.info("""
-    💡 *Accès Démonstration* :
-    * *Identifiant* : admin
-    * *Mot de passe* : emir2025
-    """)
-    # -------------------------------
+-------------------------
 
     col1, col2, col3 = st.columns([1, 2, 1])
 # --- GESTION DE LA CONNEXION (LOGIN) ---
@@ -273,4 +268,5 @@ else:
                     type="primary"
 
                 )
+
 
