@@ -75,8 +75,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.markdown("> Système d'Audit & Intelligence Financière")
     
-    # --- AJOUT DIRECT SUR GITHUB ---
--------------------------
 
     col1, col2, col3 = st.columns([1, 2, 1])
 # --- GESTION DE LA CONNEXION (LOGIN) ---
@@ -268,5 +266,6 @@ else:
                     type="primary"
 
                 )
+
 
 
