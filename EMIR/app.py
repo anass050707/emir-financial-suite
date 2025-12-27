@@ -10,8 +10,6 @@ from modules.narrator import generer_rapport
 from modules.expoter import create_pdf
 from modules.assistant import ask_financial_brain
 
-
-
 # --- CONFIGURATION DE LA PAGE ---
 st.set_page_config(
     page_title="EMIR Financial Suite", 
@@ -73,52 +71,13 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-st.markdown("> Système d'Audit & Intelligence Financière")
-    
+# ... (tes imports) ...
 
-    col1, col2, col3 = st.columns([1, 2, 1])
-# --- GESTION DE LA CONNEXION (LOGIN) ---
-if 'authenticated' not in st.session_state:
-    st.session_state['authenticated'] = False
+# Initialisation de l'état de session
+if 'logged_in' not in st.session_state:
+    st.session_state['logged_in'] = False
 
-def login_screen():
-    # Centrage vertical et horizontal façon "Terminal de login"
-    col1, col2, col3 = st.columns([1, 2, 1])
-    
-    with col2:
-        st.markdown("<br><br><br>", unsafe_allow_html=True)
-        st.title("🦅 EMIR OS v1.0")
-        st.markdown("---")
-        st.write("🔒 *SECURE ACCESS REQUIRED*")
-        
-        username = st.text_input("USER_ID", placeholder="admin")
-        password = st.text_input("PASSWORD", type="password", placeholder="••••••••")
-        
-        if st.button("INITIALIZE SESSION >_"):
-            if username == "admin" and password == "emir2025":
-                with st.spinner("Decrypting keys... Access Granted."):
-                    time.sleep(1) # Petit effet "chargement" style film
-                    st.session_state['authenticated'] = True
-                    st.rerun()
-            else:
-                st.error("⛔ ACCESS DENIED. Invalid credentials.")
-        
-        st.markdown("---")
-        st.caption("EMIR Enterprise Management System © 2025")
 
-# --- SI PAS CONNECTÉ, ON AFFICHE LE LOGIN ---
-if not st.session_state['authenticated']:
-    login_screen()
-
-# --- SI CONNECTÉ, ON AFFICHE L'APPLICATION ---
-else:
-    # Bouton de déconnexion dans la sidebar
-    with st.sidebar:
-        st.write(f"🟢 *Session Active :* admin")
-        if st.button("Log Out [X]"):
-            st.session_state['authenticated'] = False
-            st.rerun()
-        st.markdown("---")
 
     # --- LE CODE DE L'APPLICATION COMMENCE ICI ---
     # (J'ai repris ton code exact et je l'ai mis dans ce bloc "else")
@@ -264,8 +223,4 @@ else:
                     mime="application/pdf",
                     use_container_width=True,
                     type="primary"
-
                 )
-
-
-
